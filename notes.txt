@@ -1,3 +1,18 @@
+To deploy an Amazon EKS cluster using Terraform and GitHub Actions, you must store your Terraform files in a GitHub repository and automate the provisioning using a CI/CD workflow.Below is the step-by-step implementation guide using official modules from the Terraform Registry and GitHub Actions.
+
+1. Prerequisites & AWS SetupBefore building your pipeline, create a remote S3 backend manually to prevent state file corruption during concurrent GitHub runs.Create an AWS S3 Bucket to hold your .tfstate files.Create a DynamoDB Table with a partition key named LockID for state locking.Configure an IAM Role in AWS to trust your GitHub repository using OpenID Connect (OIDC) so you do not expose hardcoded AWS secret keys in GitHub.
+
+
+2. Structure Your GitHub RepositoryOrganize your GitHub repository using this standard, modular layout:text├── .github/
+│   └── workflows/
+│       └── terraform.yml       # GitHub Actions CI/CD Pipeline
+├── backend.tf                  # Remote backend configuration
+├── main.tf                     # Core infrastructure configuration
+├── providers.tf                # AWS & Kubernetes providers
+└── variables.tf                # Variable definitions
+Use code with caution.
+
+
 5. Accessing Your New ClusterOnce the GitHub workflow finishes running successfully, update your local workspace settings to securely connect to your new master control plane via kubectl:bash
 
 
