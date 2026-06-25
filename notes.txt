@@ -1,0 +1,5 @@
+5. Accessing Your New ClusterOnce the GitHub workflow finishes running successfully, update your local workspace settings to securely connect to your new master control plane via kubectl:bash
+
+
+aws eks update-kubeconfig --region us-east-1 --name production-eks-cluster
+kubectl get nodes
