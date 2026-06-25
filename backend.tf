@@ -1,8 +1,9 @@
 terraform {
   backend "s3" {
-    bucket         = "your-terraform-state-bucket"
+    bucket         = "my-terraform-state-bucket"
     key            = "eks/terraform.tfstate"
     region         = "us-east-1"
-    dynamodb_table = "your-dynamodb-lock-table"
+    # Enable native S3 locking and skip DynamoDB
+    use_s3_native_locking = true
   }
 }
