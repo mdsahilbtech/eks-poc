@@ -9,7 +9,6 @@ To deploy an Amazon EKS cluster using Terraform and GitHub Actions, you must sto
 ├── backend.tf                  # Remote backend configuration
 ├── main.tf                     # Core infrastructure configuration
 ├── providers.tf                # AWS & Kubernetes providers
-└── variables.tf                # Variable definitions
 Use code with caution.
 
 
