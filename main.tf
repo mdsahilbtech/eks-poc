@@ -33,7 +33,8 @@ module "eks" {
   cluster_version = "1.30"
 
   cluster_endpoint_public_access = true
-
+  # Disable Terraform management of the CloudWatch Log Group
+  create_cloudwatch_log_group = false
   vpc_id     = module.vpc.vpc_id
   subnet_ids = module.vpc.private_subnets
 
